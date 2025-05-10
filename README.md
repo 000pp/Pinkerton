@@ -22,7 +22,7 @@ ___
 
 <br>
 
-## ⚡ Installing / Getting started
+## ⚡ Getting started
 
 <p> A quick guide of how to install and use Pinkerton. </p>
 
@@ -42,14 +42,7 @@ If you want to use pinkerton in a Docker container, follow this commands:
 3. Run container - sudo docker run pinkerton:latest
 ```
 
-<br><br>
-
-### ⚙️ Pre-requisites
-
-- [Python 3](https://www.python.org/downloads/) installed on your machine.
-- Install the required libraries with `pip3 install -r requirements.txt`
-
-<br><br>
+<br>
 
 ### ⚫ BlackArch
 
@@ -63,14 +56,12 @@ pacman -Syu pinkerton
 
 A quick guide of how to contribute with the project.
 
-```
 1. Create a fork from Pinkerton repository
-2. Clone the repository with git clone https://github.com/your/pinkerton.git
-3. Type cd pinkerton/
+2. Clone the repository with `git clone https://github.com/your/pinkerton.git`
+3. Type `cd pinkerton/`
 4. Create a branch and make your changes
 5. Commit and make a git push
 6. Open a pull request
-```
 
 <br><br>
 
