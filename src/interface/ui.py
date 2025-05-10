@@ -1,9 +1,11 @@
-from rich import print
+from rich.console import Console
+console = Console()
 
 def banner() -> str:
-    " Return the content from banner.txt file as application banner "
+    " Prints Pinkerton's banner "
 
-    path: str = "src/interface/banner.txt"
-    with open(path) as file:
-        lines: str = file.read()
-        print(f"[bold yellow]{lines}[/]")
+    console.print("""[bold yellow]
+Pinkerton 1.7
+Investigating JavaScript files since 1850
+by 000pp
+""")

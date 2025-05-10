@@ -1,10 +1,8 @@
-# In development
-
+from rich.console import Console
+console = Console()
 from requests import get
-from rich import print
 from jsbeautifier import beautify
 from re import findall
-from src.pinkerton.settings import props
 
 regex_list = {
     'Google API': r'AIza[0-9A-Za-z-_]{35}',
@@ -35,7 +33,6 @@ regex_list = {
     'Mailgun API Key' : r'key-[0-9a-zA-Z]{32}',
     "MailChimp API Key": r"[0-9a-f]{32}-us[0-9]{1,2}",
     'RSA Private Key' : r'-----BEGIN RSA PRIVATE KEY-----',
-    "Heroku API Key": r"(?i)heroku.*[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}",
     "JWT Token": r'ey[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$',
     "Facebook Access Token": r"EAACEdEose0cBA[0-9A-Za-z]+",
     "Facebook OAuth": r"(?i)facebook.*['|\"][0-9a-f]{32}['|\"]",
@@ -87,10 +84,10 @@ regex_list = {
     "Asana Client Secret": r"""(?i)(?:asana)(?:[0-9a-z\-_\t .]{0,20})(?:[\s|']|[\s|"]){0,3}(?:=|>|:=|\|\|:|<=|=>|:)(?:'|\"|\s|=|\x60){0,5}([a-z0-9]{32})(?:['|\"|\n|\r|\s|\x60|;]|$)"""
  }
 
-def direct_scan(link) -> None:
+def scan(url, custom_headers) -> None:
     " Open JavaScript file without parsing URL before requesting "
     
-    response: function = get(link, **props, timeout=30)
+    response: function = get(url, headers=custom_headers, timeout=30)
     content: str = response.text
     content: str = beautify(content)
 
@@ -99,18 +96,4 @@ def direct_scan(link) -> None:
         match = findall(pattern, content)
 
         if(match):
-            print(f"\n[bold green][+] {key} found in {link} ~ [red]{match}[/][/]\n")
-
-def passed_scan(final_url):
-    " Parse the URL before open JavaScript directly "
-
-    response: function = get(final_url, **props, timeout=30)
-    content: str = response.text
-    content: str = beautify(content)
-
-    for key, value in regex_list.items():
-        pattern = value
-        match = findall(pattern, content)
-
-        if(match):
-            print(f"\n[bold green][+] {key} found in {final_url} ~ [red]{match}[/][/]\n")
+            console.print(f"\n[[green]+[/]] [yellow]{key}[/] found in [yellow]{url}[/]: {match}\n", highlight=False)

@@ -2,59 +2,62 @@ import re
 
 from requests import get, exceptions
 from urllib3 import disable_warnings
-from rich import print
+from rich.console import Console
+console = Console()
 
-from src.pinkerton.settings import props
-from src.pinkerton.modules.secret import direct_scan, passed_scan
+from src.pinkerton.settings import get_user_agent
+from src.pinkerton.modules.secret import scan
 
 disable_warnings()
 
 def perform_checks(args) -> None:
-    " Check if hosts is alive "
+    " Check if target is accessible "
 
-    global url
-    url = args.u
+    url = args.url
+
+    custom_headers = {
+        "User-Agent": get_user_agent(),
+    }
+
+    for header in args.HEADER:
+        name, value = header
+        custom_headers[name] = value
 
     try:
-        response = get(url, **props)
+        response = get(url, headers=custom_headers, verify=False)
         status_code: int = response.status_code
         page_content: str = response.text
 
-        status_error: str = f"[bold white on red][!] Host returned status code: {status_code}[/]"
-
-        if response.ok:
-            print(f"[bold white on green][+] Connected sucessfully with [bold white on yellow]{url}[/][/]")
-            extract_js(url, page_content)
+        if(response.ok):
+            console.print(f"[[green]+[/]] Connected sucessfully with [yellow]{url}[/]", highlight=False)
+            extract_js(url, page_content, custom_headers)
         else:
-            print(status_error)
+            console.print(f"[[red]![/]] {url} returned {status_code} status code", highlight=False)
             return False
 
     except exceptions.ConnectionError as con_error:
-        print(f"[red][!] Connection error on host {args.u} | {con_error} [/]")
+        console.print(f"[[red]![/]] {url} Connection Error: {con_error}", highlight=False)
         return False
     except exceptions.InvalidURL as invalid_error:
-        print(f"[red][!] You've passed an invalid url | {invalid_error} [/]")
+        console.print(f"[[red]![/]] Invalid URL {url}: {invalid_error}", highlight=False)
         return False
 
 
-def extract_js(url, page_content) -> None:
+def extract_js(url, page_content, custom_headers) -> None:
     " Extract JavaScript files links from page source "
 
-    # Connected sucessfully with target and start extractor
-    print(f"[bold white on yellow][*] Extracting JavaScript files from {url}")
+    console.print(f"[[yellow]![/]] Extracting JavaScript files from [yellow]{url}[/]", highlight=False)
 
     js_file_pattern = r'src="(.*?\.js)(\?.*?)?"'
     js_files = re.findall(js_file_pattern, page_content)
+    
+    console.print(f"[[green]+[/]] {len(js_files)} file(s) found\n", highlight=False)
 
-    # Return number of JavaScript files found on the webpage source
-    print(f"[bold white on green][+] Found [bold white on yellow]{len(js_files)}[/] JavaScript file(s) [/]")
-
-    for jsfile, _ in js_files:
-        final_url = f"{url}{jsfile}"
-
-        if jsfile.startswith("http"):
-            print(f"[bold white on green][+] Scanning: [bold black on white]{jsfile}[/][/]")
-            direct_scan(jsfile)
+    for js_file, _ in js_files:
+        if(js_file.startswith("http")):
+            console.print(f"[[yellow]![/]] Scanning [yellow]{js_file}[/]", highlight=False)
+            scan(js_file, custom_headers)
         else:
-            print(f"[bold white on green][+] Scanning: [bold black on white]{final_url}[/][/]")
-            passed_scan(final_url)
+            final_url = f"{url}{js_file}"
+            console.print(f"[[yellow]![/]] Scanning [yellow]{final_url}[/]", highlight=False)
+            scan(final_url, custom_headers)

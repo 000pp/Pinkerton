@@ -2,19 +2,16 @@
 > Investigating JavaScripts files since 1850
 
 <div align="center">
-    <img src="https://i.imgur.com/GvPspEa.png" width=920>
+    <img src="https://i.imgur.com/qQXb2ha.png" width=700>
 </div>
 
 <br>
 
 <p align="center">
-    <img src="https://img.shields.io/github/license/oppsec/Pinkerton?color=yellow&logo=github&style=for-the-badge">
-    <img src="https://img.shields.io/github/issues/oppsec/Pinkerton?color=yellow&logo=github&style=for-the-badge">
-    <img src="https://img.shields.io/github/stars/oppsec/pinkerton?color=yellow&logo=github&style=for-the-badge">
-    <img src="https://img.shields.io/github/forks/oppsec/Pinkerton?color=yellow&logo=github&style=for-the-badge">
-    <img src="https://img.shields.io/github/v/release/oppsec/pinkerton?color=yellow&logo=github&style=for-the-badge">
-    <img src="https://img.shields.io/github/languages/code-size/oppsec/Pinkerton?color=yellow&logo=github&style=for-the-badge">
-    <img src="https://img.shields.io/librariesio/github/oppsec/pinkerton?color=yellow&logo=github&style=for-the-badge">
+    <img src="https://img.shields.io/github/license/000pp/Pinkerton?color=yellow&logo=github&style=for-the-badge">
+    <img src="https://img.shields.io/github/issues/000pp/Pinkerton?color=yellow&logo=github&style=for-the-badge">
+    <img src="https://img.shields.io/github/stars/000pp/pinkerton?color=yellow&logo=github&style=for-the-badge">
+    <img src="https://img.shields.io/github/forks/000pp/Pinkerton?color=yellow&logo=github&style=for-the-badge">
 </p>
 
 ___
@@ -30,7 +27,7 @@ ___
 <p> A quick guide of how to install and use Pinkerton. </p>
 
 ```
-1. Clone the repository with: git clone https://github.com/oppsec/pinkerton.git
+1. Clone the repository with: git clone https://github.com/000pp/pinkerton.git
 2. Install the libraries with: pip3 install -r requirements.txt
 3. Run Pinkerton with: python3 main.py -u https://example.com
 
@@ -46,7 +43,7 @@ If you're using Python 3.11+ + Arch (as me) you're probably getting errors when 
 If you want to use pinkerton in a Docker container, follow this commands:
 
 ```
-1. Clone the repository - git clone https://github.com/oppsec/pinkerton.git
+1. Clone the repository - git clone https://github.com/000pp/pinkerton.git
 2. Build the image - sudo docker build -t pinkerton:latest .
 3. Run container - sudo docker run pinkerton:latest
 ```
@@ -56,7 +53,7 @@ If you want to use pinkerton in a Docker container, follow this commands:
 ### ⚙️ Pre-requisites
 
 - [Python 3](https://www.python.org/downloads/) installed on your machine.
-- Install the libraries with `pip3 install -r requirements.txt`
+- Install the required libraries with `pip3 install -r requirements.txt`
 
 <br><br>
 
@@ -65,31 +62,6 @@ If you want to use pinkerton in a Docker container, follow this commands:
 ```
 pacman -Syu pinkerton
 ```
-
-<br><br>
-
-## 🎥 Demo
-
-[![asciicast](https://asciinema.org/a/SDDtLFRPcauGY1Z5WFLcsc0dI.svg)](https://asciinema.org/a/SDDtLFRPcauGY1Z5WFLcsc0dI)
-
-<br><br>
-
-## ✨ Features
-
-- Works with ProxyChains
-- Fast scan
-- Low RAM and CPU usage
-- Open-Source
-- Python ❤️
-
-<br><br>
-
-## 📚 To-Do
-
-- [x] Add more secrets regex pattern
-- [ ] Improve JavaScript file extract function
-- [ ] Improve pattern match system
-- [ ] Add pass list file method
 
 <br><br>
 
