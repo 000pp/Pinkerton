@@ -18,7 +18,7 @@ ___
 
 <br>
 
-<p> ️🕵️ <b>Pinkerton</b> is an JavaScript file crawler and secret finder tool developed in Python  </p>
+<p> ️Python project to crawl for JavaScript files and search for secrets like API keys, authorization tokens, hardcoded password or related.  </p>
 
 <br>
 
@@ -26,15 +26,9 @@ ___
 
 <p> A quick guide of how to install and use Pinkerton. </p>
 
-```
-1. Clone the repository with: git clone https://github.com/000pp/pinkerton.git
-2. Install the libraries with: pip3 install -r requirements.txt
-3. Run Pinkerton with: python3 main.py -u https://example.com
-
-3.1 (Optional)
-If you're using Python 3.11+ + Arch (as me) you're probably getting errors when trying to install the libs from requirements.txt, to fix this, use:
-- pip3 install -r requirements.txt --break-system-packages
-```
+1. Clone the repository with: `git clone https://github.com/000pp/pinkerton.git`
+2. Install the libraries with: `pip3 install -r requirements.txt --break-system-packages`
+3. Run Pinkerton with: `python3 main.py -u https://example.com`
 
 <br>
 
