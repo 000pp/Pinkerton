@@ -18,7 +18,7 @@ ___
 
 <br>
 
-<p> ️Python project to crawl for JavaScript files and search for secrets like API keys, authorization tokens, hardcoded password or related.  </p>
+<p>Python project to crawl for JavaScript files and search for secrets like API keys, authorization tokens, hardcoded password or related.</p>
 
 <br>
 
