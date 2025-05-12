@@ -48,7 +48,7 @@ def extract_js(url, page_content, custom_headers) -> None:
 
     console.print(f"[[yellow]![/]] Extracting JavaScript files from [yellow]{url}[/]", highlight=False)
 
-    js_file_pattern = r'src="(.*?\.js)(\?.*?)?"'
+    js_file_pattern = r'src=["\']?([^"\'>\s]+\.js)(\?.*?)?["\'\s>]'
     js_files = re.findall(js_file_pattern, page_content)
     
     console.print(f"[[green]+[/]] {len(js_files)} file(s) found\n", highlight=False)
