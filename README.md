@@ -1,5 +1,5 @@
 # 🕵️ Pinkerton
-> Investigating JavaScripts files since 1850
+> Investigating JavaScript files since 1850
 
 <div align="center">
     <img src="https://i.imgur.com/qQXb2ha.png" width=700>
@@ -18,13 +18,13 @@ ___
 
 <br>
 
-<p>Python project to crawl for JavaScript files and search for secrets like API keys, authorization tokens, hardcoded password or related.</p>
+<p>Python project to crawl for JavaScript files and search for secrets like API keys, authorization tokens, hardcoded passwords, or related data.</p>
 
 <br>
 
 ## ⚡ Getting started
 
-<p> A quick guide of how to install and use Pinkerton. </p>
+<p>A quick guide on how to install and use Pinkerton. </p>
 
 1. Clone the repository with: `git clone https://github.com/000pp/pinkerton.git`
 2. Install the libraries with: `pip3 install -r requirements.txt --break-system-packages`
@@ -34,7 +34,7 @@ ___
 
 ### 🐳 Docker
 
-If you want to use pinkerton in a Docker container, follow this commands:
+If you want to use pinkerton in a Docker container, follow this procedure:
 
 ```
 1. Clone the repository - git clone https://github.com/000pp/pinkerton.git
@@ -54,13 +54,13 @@ pacman -Syu pinkerton
 
 ## 🔨 Contributing
 
-A quick guide of how to contribute with the project.
+A quick guide on how to contribute to the project.
 
-1. Create a fork from Pinkerton repository
+1. Create a fork of the Pinkerton repository
 2. Clone the repository with `git clone https://github.com/your/pinkerton.git`
 3. Type `cd pinkerton/`
 4. Create a branch and make your changes
-5. Commit and make a git push
+5. Commit and perform a git push
 6. Open a pull request
 
 <br><br>
